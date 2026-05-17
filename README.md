@@ -1,6 +1,8 @@
 # Douyin Local Player
 
 仿抖音风格的本地视频播放器，支持滑动切换视频、点赞、评论等功能。
+<img width="645" height="1399" alt="image" src="https://github.com/user-attachments/assets/6c8c15f3-ee16-40e9-b8b6-2880cd814302" />
+
 
 ## Features
 
