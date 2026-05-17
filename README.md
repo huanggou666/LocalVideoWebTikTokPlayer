@@ -1,0 +1,2 @@
+# LocalVideoWebTikTokPlayer
+仿抖音风格的本地视频播放器，带随机刷到视频存留测试功能
