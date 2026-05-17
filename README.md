@@ -1,8 +1,6 @@
 # Douyin Local Player
-解压 node_modules.rar 文件到node_modules文件夹 即可，Unzip the node_rodules.rar file to the node_rodules folder
-仿抖音风格的本地视频播放器，支持滑动切换视频、点赞、评论等功能。
-<img width="645" height="1399" alt="image" src="https://github.com/user-attachments/assets/6c8c15f3-ee16-40e9-b8b6-2880cd814302" />
 
+仿抖音风格的本地视频播放器，支持滑动切换视频、点赞、评论等功能。
 
 ## Features
 

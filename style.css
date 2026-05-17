@@ -108,6 +108,12 @@ html, body {
   top: 60px;
   right: 12px;
   z-index: 200;
+  transform: translateX(calc(100% - 8px));
+  transition: transform 0.3s ease;
+}
+
+.test-mode-toggle:hover {
+  transform: translateX(0);
 }
 
 .test-mode-btn {
@@ -148,6 +154,47 @@ html, body {
 
 .test-mode-btn.active .test-mode-count {
   background: rgba(255, 255, 255, 0.3);
+}
+
+/* ========== 静音按钮 ========== */
+.mute-toggle {
+  position: fixed;
+  top: 60px;
+  right: 58px;
+  z-index: 200;
+  transform: translateX(calc(100% - 8px));
+  transition: transform 0.3s ease;
+}
+
+.mute-toggle:hover {
+  transform: translateX(0);
+}
+
+.mute-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(30, 30, 30, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.mute-btn:hover {
+  background: rgba(50, 50, 50, 0.9);
+}
+
+.mute-btn.muted {
+  background: rgba(80, 30, 30, 0.9);
+}
+
+.mute-icon {
+  font-size: 20px;
 }
 
 /* ========== 视频 Feed ========== */

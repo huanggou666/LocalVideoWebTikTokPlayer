@@ -14,6 +14,7 @@ let testRemaining = 0;
 let usedTestVideos = new Set();
 let lastPlayedIsTest = false;
 let lastNonTestIndex = -1;
+let isMuted = false;
 
 function formatCount(n) {
   if (n >= 10000) return (n / 10000).toFixed(1) + 'w';
@@ -68,7 +69,6 @@ function createVideoItem(video, index) {
       loop
       playsinline
       webkit-playsinline
-      muted
       data-src="${API_BASE}/video/${encodeURIComponent(video.path).replace(/%2F/g, '/')}"
     ></video>
 
@@ -316,6 +316,7 @@ function loadVideo(index) {
   const videoEl = item.querySelector('video');
   if (!videoEl || videoEl.src) return;
   videoEl.src = videoEl.dataset.src;
+  videoEl.muted = isMuted;
 }
 
 function playVideo(index) {
@@ -325,6 +326,7 @@ function playVideo(index) {
   if (!item) return;
   const videoEl = item.querySelector(`#video-${index}`);
   if (!videoEl) return;
+  videoEl.muted = isMuted;
   videoEl.play().catch(() => {});
 }
 
@@ -520,7 +522,6 @@ async function init() {
 
     const firstVideo = document.querySelector('#video-0');
     if (firstVideo) {
-      firstVideo.muted = true;
       firstVideo.play().catch(() => {
         const startPlay = () => {
           playVideo(0);
@@ -678,3 +679,36 @@ function insertTestVideoAfterIndex(targetIndex) {
 document.getElementById('testModeBtn').addEventListener('click', toggleTestMode);
 
 loadTestVideos();
+
+function updateMuteUI() {
+  const btn = document.getElementById('muteBtn');
+  const icon = document.getElementById('muteIcon');
+  if (!btn || !icon) return;
+
+  if (isMuted) {
+    btn.classList.add('muted');
+    icon.textContent = '🔇';
+  } else {
+    btn.classList.remove('muted');
+    icon.textContent = '🔊';
+  }
+}
+
+function toggleMute() {
+  isMuted = !isMuted;
+  updateMuteUI();
+
+  const feed = document.getElementById('videoFeed');
+  const videoEls = feed.querySelectorAll('video');
+  videoEls.forEach(v => {
+    v.muted = isMuted;
+  });
+}
+
+function applyMuteToVideo(videoEl) {
+  if (videoEl) {
+    videoEl.muted = isMuted;
+  }
+}
+
+document.getElementById('muteBtn').addEventListener('click', toggleMute);
