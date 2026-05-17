@@ -1,6 +1,8 @@
 # Douyin Local Player
-
-仿抖音风格的本地视频播放器，支持滑动切换视频、点赞、评论等功能。
+解压node_rodules.rar到node_rodules文件夹,Unzip the node_rodules.rar file to the node_rodules folder
+仿抖音风格的本地视频播放器，支持滑动切换视频、点赞、带随机刷到视频存留测试等功能。
+A local video player inspired by the Douyin style, supporting swipe-based video switching, likes, and features such as random video retention testing.
+<img width="645" height="1399" alt="image" src="https://github.com/user-attachments/assets/dce328f7-c870-4dfa-9cf6-583b1609a7ec" />
 
 ## Features
 
