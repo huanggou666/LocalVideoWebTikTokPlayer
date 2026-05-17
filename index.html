@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>抖音 - 记录美好生活</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- 顶部导航 -->
+  <header class="top-nav" id="topNav">
+    <div class="nav-menu">
+      <span class="menu-icon">
+        <svg width="22" height="18" viewBox="0 0 22 18" fill="none">
+          <rect y="0" width="22" height="2.5" rx="1.25" fill="white"/>
+          <rect y="7.5" width="22" height="2.5" rx="1.25" fill="white"/>
+          <rect y="15" width="22" height="2.5" rx="1.25" fill="white"/>
+        </svg>
+        <span class="menu-badge">47</span>
+      </span>
+    </div>
+    <nav class="nav-tabs">
+      <span class="nav-tab">直播</span>
+      <span class="nav-tab">关注</span>
+      <span class="nav-tab active">推荐</span>
+    </nav>
+    <div class="nav-search">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+    </div>
+  </header>
+
+  <!-- 测试模式按钮 -->
+  <div class="test-mode-toggle" id="testModeToggle">
+    <button id="testModeBtn" class="test-mode-btn">
+      <span class="test-mode-icon">⚗</span>
+      <span class="test-mode-text">Test Mode</span>
+      <span class="test-mode-count" id="testModeCount"></span>
+    </button>
+  </div>
+
+  <!-- 视频容器 -->
+  <div class="video-feed" id="videoFeed">
+    <!-- 加载提示 -->
+    <div class="loading-screen" id="loadingScreen">
+      <div class="loading-logo">
+        <div class="logo-icon">
+          <svg width="50" height="50" viewBox="0 0 50 50" fill="none">
+            <path d="M35.5 8C35.5 8 36.5 18 46 20V28C46 28 39 27.5 35.5 23V36C35.5 43.7 29.3 50 21.5 50C13.7 50 7.5 43.7 7.5 36C7.5 28.3 13.7 22 21.5 22C22.5 22 23.5 22.1 24.4 22.3V30.7C23.5 30.4 22.5 30.2 21.5 30.2C18.2 30.2 15.5 32.8 15.5 36C15.5 39.2 18.2 41.8 21.5 41.8C24.8 41.8 27.5 39.2 27.5 36V8H35.5Z" fill="white"/>
+          </svg>
+        </div>
+        <p class="loading-text">正在加载视频...</p>
+        <div class="loading-bar">
+          <div class="loading-progress" id="loadingProgress"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 视频项目将由 JS 动态插入 -->
+  </div>
+
+  <!-- 底部导航 -->
+  <footer class="bottom-nav" id="bottomNav">
+    <div class="bottom-tab active" id="tab-home">
+      <div class="tab-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+        </svg>
+      </div>
+      <span class="tab-label">首页</span>
+    </div>
+    <div class="bottom-tab" id="tab-friends">
+      <div class="tab-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+      </div>
+      <span class="tab-label">朋友</span>
+    </div>
+    <div class="bottom-tab tab-center" id="tab-create">
+      <div class="tab-create-btn">
+        <span class="create-plus">+</span>
+      </div>
+    </div>
+    <div class="bottom-tab" id="tab-inbox">
+      <div class="tab-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+        <span class="inbox-badge">22</span>
+      </div>
+      <span class="tab-label">消息</span>
+    </div>
+    <div class="bottom-tab" id="tab-me">
+      <div class="tab-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+      </div>
+      <span class="tab-label">我</span>
+    </div>
+  </footer>
+
+  <!-- 评论弹层 -->
+  <div class="comment-sheet" id="commentSheet">
+    <div class="sheet-handle"></div>
+    <div class="sheet-header">
+      <h3 class="sheet-title">评论 <span id="commentCount">100</span></h3>
+      <button class="sheet-close" id="closeComment">✕</button>
+    </div>
+    <div class="comment-list">
+      <div class="comment-item">
+        <div class="comment-avatar" style="background: linear-gradient(135deg, #FF6B6B, #FF8E53);">A</div>
+        <div class="comment-content">
+          <div class="comment-username">@用户_28374</div>
+          <div class="comment-text">太好看了！！！😍</div>
+          <div class="comment-meta"><span>1小时前</span><span class="comment-like">❤ 234</span></div>
+        </div>
+      </div>
+      <div class="comment-item">
+        <div class="comment-avatar" style="background: linear-gradient(135deg, #4ECDC4, #44A08D);">B</div>
+        <div class="comment-content">
+          <div class="comment-username">@创意达人</div>
+          <div class="comment-text">这个视频拍的也太绝了吧！求教程 🙏</div>
+          <div class="comment-meta"><span>2小时前</span><span class="comment-like">❤ 89</span></div>
+        </div>
+      </div>
+      <div class="comment-item">
+        <div class="comment-avatar" style="background: linear-gradient(135deg, #A18CD1, #FBC2EB);">C</div>
+        <div class="comment-content">
+          <div class="comment-username">@生活记录者</div>
+          <div class="comment-text">每次看都感觉很治愈 💕</div>
+          <div class="comment-meta"><span>3小时前</span><span class="comment-like">❤ 45</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="comment-input-bar">
+      <input type="text" class="comment-input" placeholder="说点什么..." />
+      <button class="comment-send">发送</button>
+    </div>
+  </div>
+  <div class="sheet-overlay" id="sheetOverlay"></div>
+
+  <!-- 无视频提示 -->
+  <div class="no-video-hint" id="noVideoHint" style="display:none;">
+    <div class="no-video-icon">📂</div>
+    <p>当前文件夹没有找到视频文件</p>
+    <p class="no-video-sub">请在 server.js 中修改 VIDEO_DIR 路径</p>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
